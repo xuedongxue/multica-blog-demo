@@ -136,6 +136,7 @@ export function AboutSection() {
                 alt={avatar.alt}
                 width={300}
                 height={300}
+                sizes="(max-width: 768px) min(70vw, 420px), 300px"
                 className="h-full w-full object-cover"
                 priority
               />
