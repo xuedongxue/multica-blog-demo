@@ -1,38 +1,20 @@
-import type { NavItem, Project, Skill } from "@/types";
-
-export const navItems: NavItem[] = [
-  { id: "hero", label: "首页", href: "#hero" },
-  { id: "about", label: "关于", href: "#about" },
-  { id: "skills", label: "技能", href: "#skills" },
-  { id: "projects", label: "项目", href: "#projects" },
-  { id: "contact", label: "联系", href: "#contact" },
-];
-
-export const skills: Skill[] = [
-  { id: "ts", name: "TypeScript", level: 90 },
-  { id: "next", name: "Next.js", level: 88 },
-  { id: "react", name: "React", level: 90 },
-];
-
-export const projects: Project[] = [
-  {
-    id: "demo-1",
-    title: "示例项目 A",
-    description: "占位描述：后续替换为真实项目简介与链接。",
-    href: "https://example.com",
-    tech: ["Next.js", "Tailwind CSS"],
+export const aboutContent = {
+  sectionIndex: "01",
+  title: "About Me",
+  subtitle: "热爱构建美的东西",
+  paragraphs: [
+    "全栈开发者，专注产品与交互细节，让技术服务于清晰而优雅的体验。",
+    "日常深耕 React 与 Next.js，也乐于探索动效与排版如何传递情绪。",
+    "相信好的软件像苹果产品一样：克制、精准、令人愉悦。",
+  ] as const,
+  avatar: {
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
+    alt: "Portrait",
   },
-  {
-    id: "demo-2",
-    title: "示例项目 B",
-    description: "占位描述：可在此展示开源、产品或设计作品。",
-    tech: ["TypeScript", "Framer Motion"],
-  },
-];
-
-export const heroCopy = {
-  eyebrow: "Hello",
-  title: "极简留白，清晰表达。",
-  subtitle:
-    "个人介绍与作品展示的占位数据，可在正式开发中接入 CMS 或数据源。",
-};
+  stats: [
+    { label: "工作年限", value: "3+" },
+    { label: "交付项目", value: "20+" },
+    { label: "开源仓库", value: "5" },
+    { label: "技术文章", value: "12+" },
+  ] as const,
+} as const;
