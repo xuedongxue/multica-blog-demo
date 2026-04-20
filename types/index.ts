@@ -102,4 +102,11 @@ export const SKILLS: Skill[] = [
     category: "Design",
     proficiency: 83,
   },
+  {
+    id: "a11y",
+    name: "Accessibility",
+    icon: "♿",
+    category: "Design",
+    proficiency: 79,
+  },
 ];
