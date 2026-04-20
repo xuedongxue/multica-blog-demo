@@ -2,15 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Skill } from "@/types";
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 420, damping: 28 },
-  },
-};
+import { fadeInUp } from "@/lib/animations";
 
 type SkillCardProps = {
   skill: Skill;
@@ -23,7 +15,7 @@ export function SkillCard({ skill }: SkillCardProps) {
   return (
     <motion.article
       layout
-      variants={itemVariants}
+      variants={fadeInUp}
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 26 }}
       className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/60 p-6 shadow-sm backdrop-blur-xl hover:shadow-xl dark:bg-white/5"
