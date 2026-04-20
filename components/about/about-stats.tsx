@@ -2,30 +2,13 @@
 
 import { motion } from "framer-motion";
 import { aboutContent } from "@/data/content";
+import {
+  fadeInUp,
+  scrollRevealViewport,
+  staggerContainer,
+} from "@/lib/animations";
 
 type Stat = (typeof aboutContent.stats)[number];
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 12 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const viewport = {
-  once: true,
-  amount: 0.5 as const,
-  margin: "-100px" as const,
-};
 
 type AboutStatsProps = {
   stats: readonly Stat[];
@@ -38,10 +21,10 @@ export function AboutStats({ stats }: AboutStatsProps) {
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
-      viewport={viewport}
+      viewport={scrollRevealViewport}
     >
       {stats.map((stat) => (
-        <motion.li key={stat.label} variants={staggerItem} className="text-left">
+        <motion.li key={stat.label} variants={fadeInUp} className="text-left">
           <p className="text-3xl font-semibold tracking-tight text-neutral-900">
             {stat.value}
           </p>

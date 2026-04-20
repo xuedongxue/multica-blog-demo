@@ -3,53 +3,29 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { aboutContent } from "@/data/content";
+import {
+  fadeInUp,
+  fadeInLeft,
+  scaleIn,
+  scrollRevealViewport,
+  staggerContainer,
+} from "@/lib/animations";
 import { AboutStats } from "./about-stats";
 
-const viewport = {
+const watermarkViewport = {
   once: true,
+  margin: "-80px" as const,
   amount: 0.5 as const,
-  margin: "-100px" as const,
-};
-
-const slideInLeft = {
-  hidden: { x: -60, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const scaleIn = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  },
 };
 
 const watermark = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 0.1,
-    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] as const },
+    transition: {
+      duration: 1.5,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
   },
 };
 
@@ -58,14 +34,17 @@ export function AboutSection() {
     aboutContent;
 
   return (
-    <section className="relative overflow-hidden px-6 py-24 md:px-12 lg:px-20">
+    <section
+      id="about"
+      className="relative scroll-mt-12 overflow-hidden px-6 py-24 md:px-12 lg:px-20"
+    >
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 md:grid-cols-2 md:items-center md:gap-16">
         <motion.div
           className="relative z-10"
-          variants={slideInLeft}
+          variants={fadeInLeft}
           initial="hidden"
           whileInView="visible"
-          viewport={viewport}
+          viewport={scrollRevealViewport}
         >
           <div className="relative">
             <motion.span
@@ -73,7 +52,7 @@ export function AboutSection() {
               variants={watermark}
               initial="hidden"
               whileInView="visible"
-              viewport={viewport}
+              viewport={watermarkViewport}
               aria-hidden
             >
               {sectionIndex}
@@ -82,22 +61,22 @@ export function AboutSection() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={viewport}
+              viewport={scrollRevealViewport}
             >
               <motion.p
-                variants={staggerItem}
+                variants={fadeInUp}
                 className="relative text-sm font-medium uppercase tracking-[0.2em] text-apple-gray-400"
               >
                 {sectionIndex}
               </motion.p>
               <motion.h2
-                variants={staggerItem}
+                variants={fadeInUp}
                 className="relative mt-3 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl"
               >
                 {title}
               </motion.h2>
               <motion.p
-                variants={staggerItem}
+                variants={fadeInUp}
                 className="relative mt-4 text-lg text-apple-gray-500 md:text-xl"
               >
                 {subtitle}
@@ -105,7 +84,7 @@ export function AboutSection() {
               {paragraphs.map((text) => (
                 <motion.p
                   key={text}
-                  variants={staggerItem}
+                  variants={fadeInUp}
                   className="relative mt-6 max-w-xl text-base leading-relaxed text-neutral-700"
                 >
                   {text}
@@ -127,7 +106,7 @@ export function AboutSection() {
           variants={scaleIn}
           initial="hidden"
           whileInView="visible"
-          viewport={viewport}
+          viewport={scrollRevealViewport}
         >
           <div className="relative flex h-[min(420px,70vw)] w-[min(420px,70vw)] max-w-full items-center justify-center rounded-full bg-apple-blue-gradient p-10 shadow-2xl md:h-[380px] md:w-[380px]">
             <div className="relative h-[300px] w-[300px] shrink-0 overflow-hidden rounded-full border-4 border-white shadow-2xl">

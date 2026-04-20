@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { SocialLinks } from "./social-links";
 
 const MAILTO = "mailto:hello@example.com";
@@ -10,20 +11,19 @@ export function ContactSection() {
 
   return (
     <section
-      className="w-full bg-[#1d1d1f] py-24 text-white"
+      id="contact"
+      className="w-full scroll-mt-12 bg-[#1d1d1f] py-24 text-white"
       aria-labelledby="contact-heading"
     >
       <div className="mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
-        <motion.h2
-          id="contact-heading"
-          className="text-5xl font-bold tracking-tight"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-        >
-          Let&apos;s work together.
-        </motion.h2>
+        <AnimateIn variant="fadeInUp">
+          <h2
+            id="contact-heading"
+            className="text-5xl font-bold tracking-tight"
+          >
+            Let&apos;s work together.
+          </h2>
+        </AnimateIn>
 
         <p className="mt-4 max-w-xl text-lg text-white/50">
           有项目想法或合作机会？欢迎发邮件，或在下方找到我。

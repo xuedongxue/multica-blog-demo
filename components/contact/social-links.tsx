@@ -1,20 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, type Variants } from "framer-motion";
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 8 },
-  show: { opacity: 1, y: 0 },
-};
+import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 type SocialLink = {
   name: string;
@@ -52,22 +40,54 @@ const defaultLinks: SocialLink[] = [
   },
 ];
 
+const containerVariants: Variants = staggerContainer;
+
 export type SocialLinksProps = {
   links?: SocialLink[];
 };
 
 export function SocialLinks({ links = defaultLinks }: SocialLinksProps) {
+  const prefersReduced = useReducedMotion();
+
+  if (prefersReduced) {
+    return (
+      <nav
+        className="flex flex-wrap items-center justify-center gap-8"
+        aria-label="社交媒体"
+      >
+        {links.map((link) => (
+          <a
+            key={link.name}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex text-white/60 transition-colors hover:text-white"
+            aria-label={link.name}
+          >
+            <span className="h-6 w-6">{link.icon}</span>
+            <span
+              className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-800 px-2 py-1 text-xs text-white opacity-0 shadow-lg ring-1 ring-white/15 transition-opacity duration-200 group-hover:opacity-100"
+              role="tooltip"
+            >
+              {link.name}
+            </span>
+          </a>
+        ))}
+      </nav>
+    );
+  }
+
   return (
     <motion.nav
       className="flex flex-wrap items-center justify-center gap-8"
-      variants={container}
+      variants={containerVariants}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.5 }}
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
       aria-label="社交媒体"
     >
       {links.map((link) => (
-        <motion.div key={link.name} variants={item}>
+        <motion.div key={link.name} variants={fadeInUp}>
           <a
             href={link.href}
             target="_blank"

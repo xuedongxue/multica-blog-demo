@@ -1,3 +1,10 @@
+export const heroContent = {
+  title: "[你的名字]",
+  subtitle: "Full-Stack Engineer & Designer",
+  ctaPrimary: "查看我的作品",
+  ctaSecondary: "Get In Touch",
+} as const;
+
 export const aboutContent = {
   sectionIndex: "01",
   title: "About Me",

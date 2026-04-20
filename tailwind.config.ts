@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,17 +16,23 @@ const config: Config = {
           "system-ui",
           "sans-serif",
         ],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+      },
+      letterSpacing: {
+        tightest: "-0.03em",
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        "apple-blue": "#0071e3",
-        "apple-gray": {
-          100: "#f5f5f7",
-          200: "#e8e8ed",
-          300: "#d2d2d7",
-          400: "#86868b",
-          500: "#6e6e73",
+        apple: {
+          blue: "#0071e3",
+          gray: {
+            50: "#f5f5f7",
+            100: "#f5f5f7",
+            200: "#e8e8ed",
+            300: "#d2d2d7",
+            400: "#86868b",
+            500: "#6e6e73",
+            900: "#1d1d1f",
+          },
         },
       },
       backgroundImage: {
@@ -36,4 +43,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
