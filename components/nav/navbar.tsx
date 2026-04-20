@@ -8,8 +8,6 @@ import { NAV_SECTIONS, NAV_SECTION_IDS } from "@/lib/nav-sections";
 import { scrollToSection } from "@/lib/scroll-to-section";
 import { fadeInUp } from "@/lib/animations";
 
-const NAV_HEIGHT_PX = 48;
-
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -142,7 +140,7 @@ export function Navbar() {
           </motion.header>
         )}
       </AnimatePresence>
-      <div style={{ height: NAV_HEIGHT_PX }} aria-hidden className="shrink-0" />
+      <div aria-hidden className="h-12 shrink-0" />
       <MobileDrawer
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}

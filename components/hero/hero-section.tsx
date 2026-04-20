@@ -46,12 +46,7 @@ export function HeroSection() {
     >
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[40%] h-[min(72vw,540px)] w-[min(92vw,760px)] -translate-x-1/2 -translate-y-1/2"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(0, 113, 227, 0.3), transparent 72%)",
-          filter: "blur(120px)",
-        }}
+        className="pointer-events-none absolute left-1/2 top-[40%] h-[min(72vw,540px)] w-[min(92vw,760px)] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(0,113,227,0.3),transparent_72%)] blur-[120px]"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", duration: 1.2, bounce: 0.22 }}

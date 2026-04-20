@@ -11,12 +11,13 @@ const config: Config = {
     extend: {
       fontFamily: {
         display: [
-          "var(--font-geist-sans)",
+          "var(--font-display)",
+          "DM Sans",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
         ],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        mono: ["var(--font-dm-mono)", "DM Mono", "ui-monospace", "monospace"],
       },
       letterSpacing: {
         tightest: "-0.03em",
