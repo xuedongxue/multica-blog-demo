@@ -8,7 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: [
+          "var(--font-geist-sans)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+      },
       colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        "apple-blue": "#0071e3",
         "apple-gray": {
           100: "#f5f5f7",
           200: "#e8e8ed",
@@ -25,5 +36,4 @@ const config: Config = {
   },
   plugins: [],
 };
-
 export default config;
