@@ -17,7 +17,8 @@ type SkillCardProps = {
 };
 
 export function SkillCard({ skill }: SkillCardProps) {
-  const width = `${Math.min(100, Math.max(0, skill.proficiency))}%`;
+  const fill =
+    Math.min(100, Math.max(0, skill.proficiency)) / 100;
 
   return (
     <motion.article
@@ -28,11 +29,7 @@ export function SkillCard({ skill }: SkillCardProps) {
       className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/60 p-6 shadow-sm backdrop-blur-xl hover:shadow-xl dark:bg-white/5"
     >
       <div
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(600px circle at 50% 0%, rgba(0, 113, 227, 0.28), transparent 55%)",
-        }}
+        className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(600px_circle_at_50%_0%,rgba(0,113,227,0.28),transparent_55%)] opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
         aria-hidden
       />
       <div className="relative flex flex-col gap-3">
@@ -48,8 +45,8 @@ export function SkillCard({ skill }: SkillCardProps) {
         <div className="mt-1">
           <div className="h-1 w-full overflow-hidden rounded-full bg-zinc-200/80 dark:bg-white/15">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-apple-blue to-sky-400"
-              style={{ width }}
+              className="h-full origin-left rounded-full bg-gradient-to-r from-apple-blue to-sky-400"
+              style={{ transform: `scaleX(${fill})` }}
             />
           </div>
         </div>
