@@ -16,7 +16,7 @@ const slideInLeft = {
   visible: {
     x: 0,
     opacity: 1,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -25,7 +25,7 @@ const scaleIn = {
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -41,7 +41,7 @@ const staggerItem = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -49,7 +49,7 @@ const watermark = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 0.1,
-    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
